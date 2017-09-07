@@ -4,10 +4,18 @@ import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.mongo.MongoClient;
 
+import static com.dummy.vertx.rest.persons.Constants.DB_NAME_MONGO_CONFIG_KEY;
+import static com.dummy.vertx.rest.persons.Constants.DEFAULT_DB_NAME;
+import static com.dummy.vertx.rest.persons.Constants.DEFAULT_MONGO_HOST;
+import static com.dummy.vertx.rest.persons.Constants.DEFAULT_MONGO_PORT;
+import static com.dummy.vertx.rest.persons.Constants.HOST_MONGO_CONFIG_KEY;
+import static com.dummy.vertx.rest.persons.Constants.PORT_MONGO_CONFIG_KEY;
+
 /**
  * Created by sinal04 on 06/09/2017.
  */
 public class MyMongoFactory {
+
 
 //    /**
 //     *
@@ -34,15 +42,19 @@ public class MyMongoFactory {
 //        return null;
 //    }
 
+    public static JsonObject getDefaultJsonConfig() {
+        return new JsonObject()
+                .put(DB_NAME_MONGO_CONFIG_KEY, DEFAULT_DB_NAME)
+                .put(HOST_MONGO_CONFIG_KEY, DEFAULT_MONGO_HOST)
+                .put(PORT_MONGO_CONFIG_KEY, DEFAULT_MONGO_PORT);
+    }
+
     /**
      *
      * @param vertx
      * @return
      */
-    public static MongoClient createDefault(Vertx vertx) {
-        JsonObject config = new JsonObject()
-                .put("db_name", "persons_db")
-                .put("host", "127.0.0.1");
+    public static MongoClient createFromJsonConfig(Vertx vertx, JsonObject config) {
         return MongoClient.createShared(vertx, config);
     }
 }
