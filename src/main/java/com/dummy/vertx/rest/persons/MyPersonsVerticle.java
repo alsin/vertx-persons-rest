@@ -175,6 +175,7 @@ public class MyPersonsVerticle extends AbstractVerticle {
                 responseJson.put(ERROR_MESSAGE_PROP, UNKNOWN_ERROR);
             }
 
+            response.setStatusCode(responseJson.getInteger(ERROR_CODE_PROP));
             response.end(responseJson.encode());
         });
 
@@ -183,7 +184,6 @@ public class MyPersonsVerticle extends AbstractVerticle {
             throw new StateException(String.format("Resource with URI=%s not found",
                     ctx.request().path()), 404);
         });
-
 
         HttpServer server = vertx.createHttpServer();
         server.requestHandler(router::accept).listen(8080, result -> {

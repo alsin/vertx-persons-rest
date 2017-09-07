@@ -1,7 +1,7 @@
 package com.dummy.vertx.rest.persons.com.dummy.vertx.rest.persons.exception;
 
 /**
- * Created by sinal04 on 07/09/2017.
+ * App-wide exception class which provides also an error code.
  */
 public class StateException extends RuntimeException {
 

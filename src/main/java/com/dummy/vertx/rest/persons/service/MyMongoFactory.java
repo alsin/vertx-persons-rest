@@ -12,36 +12,15 @@ import static com.dummy.vertx.rest.persons.Constants.HOST_MONGO_CONFIG_KEY;
 import static com.dummy.vertx.rest.persons.Constants.PORT_MONGO_CONFIG_KEY;
 
 /**
- * Created by sinal04 on 06/09/2017.
+ * Factory that keeps details on instantiating MongoDB client instances.
  */
 public class MyMongoFactory {
 
-
-//    /**
-//     *
-//     * @param vertx
-//     * @param mongoClientConfigFile
-//     * @return
-//     */
-//    public static MongoClient createFromConfig(Vertx vertx, String mongoClientConfigFile) {
-//        FileSystem fs = vertx.fileSystem();
-//        fs.exists(mongoClientConfigFile, result -> {
-//           if (result.succeeded()) {
-//               if (result.result()) {
-//
-//                   //File exists! Try to read & init from it
-//                   fs.readFile(mongoClientConfigFile, readResult -> {
-//
-//
-//                   });
-//               }
-//           } else {
-//
-//           }
-//        });
-//        return null;
-//    }
-
+    /**
+     * Returns default MongoDB config JSON object.
+     *
+     * @return
+     */
     public static JsonObject getDefaultJsonConfig() {
         return new JsonObject()
                 .put(DB_NAME_MONGO_CONFIG_KEY, DEFAULT_DB_NAME)
@@ -50,8 +29,10 @@ public class MyMongoFactory {
     }
 
     /**
+     * Creates a MongoDB client from the given JSON config.
      *
      * @param vertx
+     * @param config
      * @return
      */
     public static MongoClient createFromJsonConfig(Vertx vertx, JsonObject config) {

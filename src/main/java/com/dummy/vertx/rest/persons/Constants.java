@@ -1,7 +1,7 @@
 package com.dummy.vertx.rest.persons;
 
 /**
- * Created by sinal04 on 07/09/2017.
+ * App global constants.
  */
 public interface Constants {
     public static final String DEFAULT_DB_NAME = "persons_db";
