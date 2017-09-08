@@ -1,0 +1,6 @@
+{
+  "mongo.db.name": "my_custom_db_name",
+  "mongo.host": "localhost",
+  "mongo.port": 27017,
+  "persons.collection.name": "perzonas"
+}

@@ -41,8 +41,8 @@ import static com.dummy.vertx.rest.persons.Constants.UNKNOWN_ERROR;
  *     <li>GET: /persons/:id - to return a single person filtering by its _id</li>
  *     <li>
  *         POST: /persons - to insert or update new\existing person information.
- *         If the JSON object does not contain _id property, a new record is created.
- *         If it does, then the app tries to update an existing record.
+ *         If the JSON object does not contain _id property or contains one but it's not yet in the collection,
+ *         a new record is created. If it does, then the corresponding record JSON gets updated.
  *     </li>
  * </ul>
  * Created by sinal04 on 06/09/2017.
